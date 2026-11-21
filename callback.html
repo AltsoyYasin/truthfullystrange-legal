@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Truthfully Strange Publisher - sign-in</title>
+<style>body{font:16px/1.6 system-ui,Segoe UI,Arial,sans-serif;max-width:640px;margin:60px auto;padding:0 16px;color:#111;background:#fff}h1{color:#0B1530}</style></head>
+<body><h1>Finishing TikTok sign-in…</h1>
+<p id="msg">Handing the sign-in result to the publisher running on this computer.</p>
+<script>
+// TikTok redirects here (https, verified domain). The publisher tool listens on this computer
+// (http://localhost:8765) during `tiktok.py auth`; forward the query string (code, state) to it.
+var q = window.location.search;
+if (q && q.length > 1) {
+  window.location.replace("http://localhost:8765/callback" + q);
+} else {
+  document.getElementById("msg").textContent = "No sign-in data received. Start the sign-in again from the publisher.";
+}
+</script>
+<noscript>JavaScript is needed to finish the sign-in.</noscript>
+</body></html>
